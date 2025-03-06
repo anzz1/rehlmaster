@@ -1,6 +1,6 @@
 # rehlmaster
-Metamod plugin for [ReHLDS](https://github.com/rehlds/ReHLDS/) that restores original GoldSrc functionality of pinging master servers.
-Compatible with reference implementation [hlmaster](https://github.com/anzz1/hlmaster/).
+Metamod plugin for [ReHLDS](https://github.com/rehlds/ReHLDS/) that restores original GoldSrc functionality of pinging master servers.  
+Compatible with reference implementation [hlmaster](https://github.com/anzz1/hlmaster/) or any other implementation that is implemented correctly according to specification.
 
 # Installation
 Install it as a metamod plugin
