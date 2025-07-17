@@ -65,10 +65,12 @@ void SV_Frame_hook(IRehldsHook_SV_Frame* chain) {
 
 	double dCurTime = g_RehldsFuncs->GetRealTime();
 	static double s_dLastHeartbeat;
+	static bool s_bInitialHeartbeat = true;
 
-	if (dCurTime - s_dLastHeartbeat > HEARTBEAT_TIME)
+	if ((dCurTime - s_dLastHeartbeat > HEARTBEAT_TIME) || s_bInitialHeartbeat)
 	{
 		s_dLastHeartbeat = dCurTime;
+		s_bInitialHeartbeat = false;
 
 		for (int i = 0; i < 5; i++) {
 			if (!pcv_sv_master[i]->string[0]) continue;
