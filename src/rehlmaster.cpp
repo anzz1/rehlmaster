@@ -86,7 +86,13 @@ void SV_Frame_hook(IRehldsHook_SV_Frame* chain) {
 			netAdr.type = NA_IP;
 
 			g_RehldsFuncs->NET_SendPacket(1, (void*)"q", netAdr);
-			ALERT(at_console, "[rehlmaster] sent master heartbeat to (%d) (%hhu.%hhu.%hhu.%hhu:%hu)\n", (i+1), ((unsigned char *)&ip)[0], ((unsigned char *)&ip)[1], ((unsigned char *)&ip)[2], ((unsigned char *)&ip)[3], PORT_MASTER);
+			ALERT(at_console, "[rehlmaster] sent master heartbeat to (%d) (%hhu.%hhu.%hhu.%hhu:%hu)\n",
+				(i + 1),
+				((unsigned char*)&ip)[0],
+				((unsigned char*)&ip)[1],
+				((unsigned char*)&ip)[2],
+				((unsigned char*)&ip)[3],
+				PORT_MASTER);
 		}
 	}
 }
