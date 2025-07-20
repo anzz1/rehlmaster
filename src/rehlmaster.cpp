@@ -64,7 +64,7 @@ void SV_Frame_hook(IRehldsHook_SV_Frame* chain) {
 	chain->callNext();
 
 	double dCurTime = g_RehldsFuncs->GetRealTime();
-	static double s_dLastHeartbeat;
+	static double s_dLastHeartbeat = -HEARTBEAT_TIME + 5.0;
 
 	if (dCurTime - s_dLastHeartbeat > HEARTBEAT_TIME)
 	{
