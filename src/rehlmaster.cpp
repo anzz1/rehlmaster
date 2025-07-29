@@ -5,11 +5,11 @@
 #include "server_info.h"
 
 cvar_t cv_sv_master[5] = {
-	{"sv_master1", "", FCVAR_SERVER | FCVAR_EXTDLL, 0.0f, NULL},
-	{"sv_master2", "", FCVAR_SERVER | FCVAR_EXTDLL, 0.0f, NULL},
-	{"sv_master3", "", FCVAR_SERVER | FCVAR_EXTDLL, 0.0f, NULL},
-	{"sv_master4", "", FCVAR_SERVER | FCVAR_EXTDLL, 0.0f, NULL},
-	{"sv_master5", "", FCVAR_SERVER | FCVAR_EXTDLL, 0.0f, NULL}
+	{"sv_master1", "", FCVAR_EXTDLL, 0.0f, NULL},
+	{"sv_master2", "", FCVAR_EXTDLL, 0.0f, NULL},
+	{"sv_master3", "", FCVAR_EXTDLL, 0.0f, NULL},
+	{"sv_master4", "", FCVAR_EXTDLL, 0.0f, NULL},
+	{"sv_master5", "", FCVAR_EXTDLL, 0.0f, NULL}
 };
 
 cvar_t* pcv_sv_master[5];
