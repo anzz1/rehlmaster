@@ -3,8 +3,9 @@ Metamod plugin for [ReHLDS](https://github.com/rehlds/ReHLDS/) that restores ori
 Compatible with reference implementation [hlmaster](https://github.com/anzz1/hlmaster/) or any other implementation that is implemented correctly according to specification.
 
 # Installation
-Install it as a metamod plugin
-Configuration is by console variables
+1. Download the [latest release](https://github.com/anzz1/rehlmaster/releases/latest)
+2. Install it as a metamod plugin  
+3. Configuration is by console variables
 ```
 sv_master1 <host>
 sv_master2 <host>
