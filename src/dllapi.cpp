@@ -1,10 +1,12 @@
 #include <extdll.h>
 #include <meta_api.h>
 #include "server_info.h"
+#include "rehlmaster.h"
 
 void ServerActivate(edict_t *pEdictList, int edictCount, int clientMax)
 {
 	g_ServerInfo->serverActivate(clientMax);
+	rehlmaster_serverActivate();
 	RETURN_META(MRES_IGNORED);
 }
 

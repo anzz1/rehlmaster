@@ -89,6 +89,28 @@ void SV_Frame_hook(IRehldsHook_SV_Frame* chain) {
 	}
 }
 
+void rehlmaster_serverActivate() {
+	FILE* fp = fopen("rehlmaster.cfg", "rt");
+	if (fp) {
+		char line[1024];
+
+		while (fgets(line, sizeof(line)-1, fp)) {
+
+			trimbuf(line);
+
+			if (line[0] == 0 || line[0] == ';' || line[0] == '#' || line[0] == '/') {
+				continue;
+			}
+
+			strcat(line, "\n");
+
+			g_engfuncs.pfnServerCommand(line);
+			g_engfuncs.pfnServerExecute();
+		}
+		fclose(fp);
+	}
+}
+
 void rehlmaster_init() {
 	for (int i = 0; i < 5; i++) {
 		g_engfuncs.pfnCvar_RegisterVariable(&cv_sv_master[i]);
