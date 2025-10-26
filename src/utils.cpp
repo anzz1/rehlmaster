@@ -79,3 +79,19 @@ unsigned long host2ip(const char *hostname) {
 	freeaddrinfo(info);
 	return ip;
 }
+
+void ServerPrintf(char *fmt, ...)
+{
+	va_list args;
+	char buffer[512];
+
+	va_start(args, fmt);
+	int i = vsnprintf(buffer, sizeof(buffer), fmt, args);
+	va_end(args);
+	if (i <= 0) return;
+
+	buffer[(i < 511) ? i : 511] = 0;
+
+	// Print to server console
+	SERVER_PRINT(buffer);
+}

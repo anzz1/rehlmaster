@@ -14,7 +14,7 @@ plugin_info_t Plugin_info =
 {
 	META_INTERFACE_VERSION,						// ifvers
 	"rehlmaster",								// name
-	"0.0.4",									// version
+	"0.0.5",									// version
 	__DATE__,									// date
 	"anzz1",									// author
 	"http://github.com/anzz1/rehlmaster",		// url

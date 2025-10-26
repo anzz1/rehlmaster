@@ -1,6 +1,7 @@
 #pragma once
 
 #include <rehlds_api.h>
+#include <meta_api.h>
 #include "sizebuf.h"
 #include "utils.h"
 
@@ -9,6 +10,8 @@
 #define PORT_SERVER				27015
 #define PORT_MASTER				27010
 #define HEARTBEAT_TIME			180.0
+
+#define SERVER_PRINT (*g_engfuncs.pfnServerPrint)
 
 extern IRehldsApi* g_RehldsApi;
 extern const RehldsFuncs_t* g_RehldsFuncs;

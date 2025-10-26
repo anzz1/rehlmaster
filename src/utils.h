@@ -8,3 +8,4 @@ extern void reverse(char* s);
 extern char* __itoa(int n, char* s);
 extern char* trimbuf(char *str);
 extern unsigned long host2ip(const char *hostname);
+extern void ServerPrintf(char *fmt, ...);

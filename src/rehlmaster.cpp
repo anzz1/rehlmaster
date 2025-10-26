@@ -72,15 +72,26 @@ void SV_Frame_hook(IRehldsHook_SV_Frame* chain) {
 
 		for (int i = 0; i < 5; i++) {
 			if (!pcv_sv_master[i]->string[0]) continue;
-			uint32 ip = host2ip(pcv_sv_master[i]->string);
-			if (ip == 0 || ip == -1) {
-				ALERT(at_console, "[rehlmaster] sv_master%d:\"%s\" host could not be resolved\n", (i+1), pcv_sv_master[i]->string);
+
+			char hostname[256];
+			hostname[0] = 0;
+			unsigned short port = 0;
+
+			if (sscanf(pcv_sv_master[i]->string, "%255[-.0-9A-Za-z]:%hu", hostname, &port) < 1) {
+				ServerPrintf("[rehlmaster] sv_master%d: \"%s\": invalid hostname\n", (i+1), pcv_sv_master[i]->string);
 				continue;
 			}
+			hostname[255] = 0;
+			uint32 ip = host2ip(hostname);
+			if (ip == 0 || ip == -1) {
+				ServerPrintf("[rehlmaster] sv_master%d: \"%s\": host could not be resolved\n", (i+1), hostname);
+				continue;
+			}
+			if (!port) port = PORT_MASTER;
 
 			netadr_t netAdr;
 			*((uint32*)&netAdr.ip[0]) = ip;
-			netAdr.port = (PORT_MASTER >> 8) | (PORT_MASTER << 8); // htons(port)
+			netAdr.port = (port >> 8) | (port << 8); // htons(port)
 			netAdr.type = NA_IP;
 
 			g_RehldsFuncs->NET_SendPacket(1, (void*)"q", netAdr);
