@@ -52,7 +52,7 @@ bool PreprocessPacket_hook(IRehldsHook_PreprocessPacket* chain, uint8* data, uns
 		uint32 len = sizeof(buf);
 		craft_master_reply(buf, &len, *(uint32*)(data + 6));
 		g_RehldsFuncs->NET_SendPacket(len, buf, from);
-		ALERT(at_console, "[rehlmaster] replied to master challenge from (%hhu.%hhu.%hhu.%hhu:%hu)\n", from.ip[0], from.ip[1], from.ip[2], from.ip[3], PORT_MASTER);
+		ALERT(at_console, "[rehlmaster] replied to master challenge from (%hhu.%hhu.%hhu.%hhu:%hu)\n", from.ip[0], from.ip[1], from.ip[2], from.ip[3], (from.port >> 8) | (from.port << 8));
 
 		return false;
 	}
@@ -95,7 +95,7 @@ void SV_Frame_hook(IRehldsHook_SV_Frame* chain) {
 			netAdr.type = NA_IP;
 
 			g_RehldsFuncs->NET_SendPacket(1, (void*)"q", netAdr);
-			ALERT(at_console, "[rehlmaster] sent master heartbeat to (%d) (%hhu.%hhu.%hhu.%hhu:%hu)\n", (i+1), ((unsigned char *)&ip)[0], ((unsigned char *)&ip)[1], ((unsigned char *)&ip)[2], ((unsigned char *)&ip)[3], PORT_MASTER);
+			ALERT(at_console, "[rehlmaster] sent master heartbeat to (%d) (%hhu.%hhu.%hhu.%hhu:%hu)\n", (i+1), ((unsigned char *)&ip)[0], ((unsigned char *)&ip)[1], ((unsigned char *)&ip)[2], ((unsigned char *)&ip)[3], port);
 		}
 	}
 }
